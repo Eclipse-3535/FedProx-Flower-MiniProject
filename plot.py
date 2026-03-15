@@ -16,8 +16,8 @@ def load_data(filename):
 try:
     # 提取 FedAvg (mu=0.0) 的数据
     rounds, acc_fedavg, loss_fedavg = load_data('results_mu_0.0.json')
-    # 提取 FedProx (mu=0.1) 的数据
-    _, acc_fedprox, loss_fedprox = load_data('results_mu_0.1.json')
+    # 提取 FedProx (mu=0.01) 的数据
+    _, acc_fedprox, loss_fedprox = load_data('results_mu_0.01.json')
 except FileNotFoundError:
     print("错误：找不到 json 文件")
     exit()
@@ -28,7 +28,7 @@ plt.figure(figsize=(12, 5))
 # --- 图 1：Accuracy vs Rounds ---
 plt.subplot(1, 2, 1)
 plt.plot(rounds, acc_fedavg, label='FedAvg ($\mu=0.0$)', marker='o', linestyle='-', color='blue')
-plt.plot(rounds, acc_fedprox, label='FedProx ($\mu=0.1$)', marker='s', linestyle='--', color='red')
+plt.plot(rounds, acc_fedprox, label='FedProx ($\mu=0.01$)', marker='s', linestyle='--', color='red')
 plt.title('Test Accuracy vs Communication Rounds')
 plt.xlabel('Communication Rounds')
 plt.ylabel('Test Accuracy')
@@ -38,7 +38,7 @@ plt.legend()
 # --- 图 2：Loss vs Rounds ---
 plt.subplot(1, 2, 2)
 plt.plot(rounds, loss_fedavg, label='FedAvg ($\mu=0.0$)', marker='o', linestyle='-', color='blue')
-plt.plot(rounds, loss_fedprox, label='FedProx ($\mu=0.1$)', marker='s', linestyle='--', color='red')
+plt.plot(rounds, loss_fedprox, label='FedProx ($\mu=0.01$)', marker='s', linestyle='--', color='red')
 plt.title('Test Loss vs Communication Rounds')
 plt.xlabel('Communication Rounds')
 plt.ylabel('Test Loss')

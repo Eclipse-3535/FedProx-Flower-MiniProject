@@ -76,7 +76,7 @@ class FedProxClient(fl.client.NumPyClient):
         mu = config.get("mu", 0.0)
 
         # 把动态获取的 mu 传进训练函数
-        train_fedprox(self.net, parameters, self.trainloader, mu=mu, epochs=1)
+        train_fedprox(self.net, parameters, self.trainloader, mu=mu, epochs=5)
         return self.get_parameters(config=None), len(self.trainloader.dataset), {}
 
     def evaluate(self, parameters, config):

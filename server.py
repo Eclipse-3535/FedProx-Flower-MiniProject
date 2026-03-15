@@ -7,7 +7,7 @@ from dataset import load_datasets
 # ==========================================
 # 核心实验参数
 # ==========================================
-MU = 0.1  # 0.0 代表运行 FedAvg； 0.1 代表运行 FedProx
+MU = 0.01  # 0.0 代表运行 FedAvg； 0.01 代表运行 FedProx
 NUM_ROUNDS = 10
 NUM_CLIENTS = 2
 
