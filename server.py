@@ -7,8 +7,8 @@ from dataset import load_datasets
 # ==========================================
 # 核心实验参数
 # ==========================================
-MU = 0.01  # 0.0 代表运行 FedAvg； 0.01 代表运行 FedProx
-NUM_ROUNDS = 10
+MU = 0.05  # 0.0 代表运行 FedAvg； 大于 0.0 代表运行 FedProx
+NUM_ROUNDS = 20
 NUM_CLIENTS = 2
 
 trainloaders, valloader = load_datasets(NUM_CLIENTS)
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     )
 
     # --- 把结果保存到本地文件 ---
-    filename = f"results_mu_{MU}.json"
+    filename = f"new_results_mu_{MU}.json"
     results = {
         "loss": history.losses_distributed,
         "accuracy": history.metrics_distributed["accuracy"]

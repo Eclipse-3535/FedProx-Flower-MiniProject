@@ -7,7 +7,7 @@ from models import SimpleCNN
 # --- FedProx 的核心训练逻辑 ---
 def train_fedprox(local_model, global_parameters, trainloader, mu=0.1, epochs=1):
     criterion = torch.nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(local_model.parameters(), lr=0.01)
+    optimizer = torch.optim.SGD(local_model.parameters(), lr=0.05)
 
     # 参照模型
     global_model = SimpleCNN()
@@ -76,7 +76,7 @@ class FedProxClient(fl.client.NumPyClient):
         mu = config.get("mu", 0.0)
 
         # 把动态获取的 mu 传进训练函数
-        train_fedprox(self.net, parameters, self.trainloader, mu=mu, epochs=5)
+        train_fedprox(self.net, parameters, self.trainloader, mu=mu, epochs=10)
         return self.get_parameters(config=None), len(self.trainloader.dataset), {}
 
     def evaluate(self, parameters, config):
